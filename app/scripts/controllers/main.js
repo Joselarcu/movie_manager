@@ -8,10 +8,13 @@
  * Controller of the movieManagerApp
  */
 angular.module('movieManagerApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function (genreService) {
+   
+    var genreParams ={};
+    genreParams.entity ="genre"
+    genreParams.form ="views/genre_form.html";
+    //genreParams.createFunction = genreService.createGenre(name);
+    genreService.createGenre(name);
+    this.genreParams = genreParams;
+
   });

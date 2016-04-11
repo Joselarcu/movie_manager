@@ -46,7 +46,13 @@
     </div>
     <div class="row">
 
-      <input type="text" class="form-control input-sm" placeholder="Small">      
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search for...">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-refresh"></i></button>
+        </span>
+      </div>
+
     </div>
     <div class="row">
       <h4>Actions</h4>
@@ -56,7 +62,45 @@
     </div>
   </div>
 </div>
-<!-- <div class="row">
-  <div class="col-md-6"><h1>Movies</h1></div>
-  <div class="col-md-6">row 2 col 2</div>
-</div> -->
+
+<div class="row row-movies">
+  <div class="col-md-6">
+    <div class="row">
+      <h1>Movies</h1>
+    </div>
+    <div class="row"> 
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-5 second-col">
+    <div class="row">
+      <h2>Filters</h2>
+    </div>
+    <div class="row">
+
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search for...">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-refresh"></i></button>
+        </span>
+      </div>
+
+    </div>
+    <div class="row">
+      <h4>Actions</h4>
+    </div>
+    <div class="row">
+      <button type="button" class="btn btn-primary">Add movie</button>
+    </div>
+  </div>
+</div>

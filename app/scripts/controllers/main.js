@@ -8,13 +8,14 @@
  * Controller of the movieManagerApp
  */
 angular.module('movieManagerApp')
-  .controller('MainCtrl', function (genreService) {
+  .controller('MainCtrl',['$scope','genreService', function ($scope,genreService) {
    
-    var genreParams ={};
-    genreParams.entity ="genre"
-    genreParams.form ="views/genre_form.html";
-    //genreParams.createFunction = genreService.createGenre(name);
-    genreService.createGenre(name);
-    this.genreParams = genreParams;
+    // var genreParams ={};
+    // genreParams.entity ="genre"
+    // genreParams.form ="views/genre_form.html";
+    // //genreParams.createFunction = genreService.createGenre(name);
+    // genreService.createGenre(name);
+    // this.genreParams = genreParams;
+ 
 
-  });
+  }]);

@@ -38,7 +38,7 @@
         <tbody>
           <tr ng-repeat="genre in genres | filter:searchName |orderBy: orderDirection">
             <th>{{genre.name}}</th>
-            <th>{{genre.numMovies}}</th>
+            <th>{{genre.movies.length}}</th>
             <th> 
               <button type="button" class="btn btn-danger">
                 <span class="glyphicon glyphicon-trash" ng-click="deleteGenre(genre.name)"></span>
@@ -79,7 +79,7 @@
   </div>
 </div>
 
-<div class="row row-movies">
+<div class="row row-movies" ng-controller="MovieCtrl">
   <div class="col-md-6">
     <div class="row">
       <h1>Movies</h1>
@@ -114,8 +114,7 @@
     <div class="row">
       <h4>Actions</h4>
     </div>
-    <div class="row">
-      <button type="button" class="btn btn-primary">Add movie</button>
+    <div class="row" ng-include="'views/create_movie_modal.html'">
     </div>
   </div>
 </div>

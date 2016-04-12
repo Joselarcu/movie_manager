@@ -12,7 +12,7 @@ angular.module('movieManagerApp')
 
   	$scope.genres = genreService.restoreState() || [];
   	$scope.inverse = true;
-
+    $scope.orderDirection = 'name'
   	 $scope.createGenre = function(name){	
     	genreService.createGenre(name);
     	$scope.genres = genreService.restoreState();
@@ -26,7 +26,7 @@ angular.module('movieManagerApp')
 
     $scope.sortByName = function(){
     	$scope.inverse = !$scope.inverse;
-    	$scope.orderDirection = ($scope.inverse) ? '-name' : 'name';
+    	$scope.orderDirection = ($scope.inverse) ? 'name' : '-name';
     }
 
   }]);

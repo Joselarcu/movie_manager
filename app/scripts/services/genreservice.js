@@ -22,28 +22,23 @@ angular.module('movieManagerApp')
       $window.localStorage && $window.localStorage.setItem('genres-stored', JSON.stringify(genres));
     }
 
-    // var genres = restoreState();
-
     this.createGenre = function(name){
       console.log("create Genre!");
       var genre = {};
       genre.name = name;
-      genre.numMovies = 0;
+      genre.movies = [];
 
       var id = genres.length + 1;
       var found = genres.some(function (el) {
-        console.log("wiiiii");
         return el.name === name;
       });
-      if (!found) {
+      if (!found && name != undefined) {
         genres.push(genre);
         saveState();
       }
       else{
-        console.log("genre already exists!");
+        console.log("Invalid genre");
       }
-
-
     }
 
     this.restoreState = function(){
@@ -51,11 +46,9 @@ angular.module('movieManagerApp')
     }
 
     this.deleteGenre = function(name){
-      console.log("genre deleted");
       for(var i in genres){
         if(genres[i].name == name){
           genres.splice(i,1);
-          console.log("eliminados", genres);
           saveState();
           break;
         }
@@ -63,8 +56,9 @@ angular.module('movieManagerApp')
     }
 
     this.getGenres = function(){
-      console.log("get all genres");
-
+      return genres;
     }
+
+  
 
   });

@@ -59,6 +59,30 @@ angular.module('movieManagerApp')
       return genres;
     }
 
+    this.addMovie = function(genreName,movieTitle){
+      console.log("añadiendo pelicula...", movieTitle,genreName);
+      for(var x in genres){
+        console.log(x);
+        if(genres[x].name == genreName){
+          var movies = genres[x].movies;
+          console.log("peliculas",movies);
+          var id = movies.length + 1;
+          var found = movies.some(function (el) {
+            console.log("weeei");
+            return el.title === movieTitle;
+          });
+          if (!found && movieTitle != undefined) {
+            genres[x].movies.push(movieTitle);
+            console.log("pelicula añadida");
+            saveState();
+          }
+          else{
+            console.log("invalid movie!");
+          }
+        }
+      }
+    }
+
   
 
   });

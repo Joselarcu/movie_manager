@@ -20,8 +20,12 @@ angular.module('movieManagerApp')
  //    	});
  //    });
  //  });
-
-
-  	
-
-  }]);
+ //  
+ //  
+ $scope.createMovie = function(movie){
+    genreService.addMovie(movie.genre.name,movie.title);
+    
+    $('#myModalMovie').modal('hide');
+ }
+	
+}]);

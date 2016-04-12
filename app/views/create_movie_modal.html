@@ -21,13 +21,23 @@
             <option></option>
             <option ng-repeat="genre in genres" ng-selected="item.selected" ng-model="movie.genre">{{genre.name}}</option>
           </select> -->
-          <select2></select2>
+          <!-- <select2></select2> -->
+
+          <ui-select ng-model="movie.genre">
+            <ui-select-match>
+                <span ng-bind="$select.selected.name"></span>
+            </ui-select-match>
+            <ui-select-choices repeat="genre in (genres | filter: $select.search) track by genre.name">
+                <span ng-bind="genre.name"></span>
+            </ui-select-choices>
+        </ui-select>
+
         </div>
       </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" ng-click="createGenre(movie)">Create</button>
+        <button type="submit" class="btn btn-primary" ng-click="createMovie(movie)">Create</button>
       </div>
     </div>
   </div>

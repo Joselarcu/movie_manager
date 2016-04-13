@@ -31,14 +31,7 @@
       <h2>Filters</h2>
     </div>
     <div class="row">
-
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search name" ng-model="searchName">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button" ng-click="searchName=''"><i class="glyphicon glyphicon-refresh"></i></button>
-        </span>
-      </div>
-
+      <filter-input ng-model="searchName"></filter-input>
     </div>
     <div class="row">
       <h4>Actions</h4>
@@ -81,13 +74,7 @@
       <h2>Filters</h2>
     </div>
     <div class="row">
-
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search for..." ng-model="searchTitle">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button" ng-click="searchTitle=''"><i class="glyphicon glyphicon-refresh"></i></button>
-        </span>
-      </div>
+      <filter-input ng-model="searchTitle"></filter-input>
     </div>
     <div class="row">
       <h4>Actions</h4>

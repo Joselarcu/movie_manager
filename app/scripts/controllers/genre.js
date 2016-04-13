@@ -8,6 +8,7 @@ angular.module('movieManagerApp')
   	$scope.inverse = true;
     $scope.orderDirection = 'name'
     $scope.genreCreated = false;
+   
 
   	 $scope.createGenre = function(name){	
     	$scope.genreCreated = !genreService.createGenre(name);

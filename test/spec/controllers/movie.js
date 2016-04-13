@@ -24,11 +24,4 @@ describe('Controller: MovieCtrl', function () {
      expect(scope.orderTitleDirection).toBeDefined();
   });
 
-  it('should create a movie', function () {
-      var movie = {"title":"Marte", "genre": "Science fiction"};
-      scope.createMovie(movie);
-      expect(scope.movies.length).toBe(1);
-  });
-
-
 });

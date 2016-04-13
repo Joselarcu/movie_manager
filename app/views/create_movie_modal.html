@@ -11,34 +11,38 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Create Movie</h4>
       </div>
-      <div class="modal-body">
-      <form>
-        <div class="form-group">
-          <label>Title:</label>
-          <input type="text" class="form-control" id="movie" ng-model="movie.title">
-          <label>Genre:</label> 
-          <!-- <select id="genre" class="form-control">
-            <option></option>
-            <option ng-repeat="genre in genres" ng-selected="item.selected" ng-model="movie.genre">{{genre.name}}</option>
-          </select> -->
-          <!-- <select2></select2> -->
+      <form name="movieForm" novalidate> 
+        <div class="modal-body">
+          <div class="form-group" >
+            <label>Title*</label>
+            <input type="text" class="form-control" name="title" id="movie" ng-model="movie.title" required>
+            <div>
+              <span class="error" ng-show="movieForm.$submitted && movieForm.title.$error.required && !movieCreated">
+               invalid field</span>
+            </div>
 
-          <ui-select ng-model="movie.genre">
-            <ui-select-match>
-                <span ng-bind="$select.selected.name"></span>
-            </ui-select-match>
-            <ui-select-choices repeat="genre in (genres | filter: $select.search) track by genre.name">
-                <span ng-bind="genre.name"></span>
-            </ui-select-choices>
-        </ui-select>
+            <label>Genre*</label> 
+            <ui-select ng-model="movie.genre" name="genre" required>
+              <ui-select-match>
+                  <span ng-bind="$select.selected.name"></span>
+              </ui-select-match>
+              <ui-select-choices repeat="genre in (genres | filter: $select.search) track by genre.name ">
+                  <span ng-bind="genre.name"></span>
+              </ui-select-choices>
+            </ui-select>
+            <div>
+              <span class="error" ng-show="movieForm.$submitted && movieForm.genre.$error.required && !movieCreated">
+               invalid field</span>
+            </div>
 
+          </div>
         </div>
-      </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" ng-click="createMovie(movie)">Create</button>
-      </div>
+        <div class="modal-footer">
+          {{!movieCreated}}
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" ng-click="createMovie(movie);movie={}">Create</button>
+        </div>
+    </form>
     </div>
   </div>
 </div>

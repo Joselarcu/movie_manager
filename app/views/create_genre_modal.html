@@ -4,25 +4,28 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Create Genre</h4>
       </div>
-      <div class="modal-body">
-      <form>
-        <div class="form-group">
-          <label for="genre" >Name:</label>
-          <input type="text" class="form-control" id="genre" ng-model="name">
+      <form name="genreForm" novalidate>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="genre" >Name*</label>
+            <input type="text" class="form-control" id="genre" ng-model="name" name="name" required> 
+            <div ng-show="genreForm.$submitted && !genreCreated">
+              <span  class="error">Invalid field</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" ng-click="createGenre(name); name=''">Create</button>
         </div>
       </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" ng-click="createGenre(name);name = null">Create</button>
-      </div>
     </div>
   </div>
 </div>

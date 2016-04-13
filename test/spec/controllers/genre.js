@@ -17,7 +17,27 @@ describe('Controller: GenreCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(GenreCtrl.awesomeThings.length).toBe(3);
+  it('inverse should be defined', function () {
+    expect(scope.inverse).toBeDefined();
+    expect(scope.inverse).toBe(true);
+  });
+   it('orderDirection should be defined', function () {
+    expect(scope.orderDirection).toBeDefined();
+    expect(scope.orderDirection).toBe('name');
+  });
+
+  it('genres should be defined', function () {
+    expect(scope.orderDirection).toBeDefined();
+  });
+
+  it('should create a genre with the correct name',function(){
+    scope.createGenre('Science fiction');
+    expect(scope.genres.length).toBe(1);
+    expect(scope.genres[0].name).toBe('Science fiction');
+  });
+
+  it('should delete a genre given the name',function(){
+    scope.deleteGenre('Science fiction');
+     expect(scope.genres.length).toBe(0);
   });
 });

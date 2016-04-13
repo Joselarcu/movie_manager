@@ -1,11 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc directive
- * @name movieManagerApp.directive:createEntity
- * @description
- * # createEntity
- */
 angular.module('movieManagerApp')
   .directive('createEntity', function () {
     return {

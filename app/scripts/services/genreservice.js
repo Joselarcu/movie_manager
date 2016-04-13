@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc service
- * @name movieManagerApp.genreService
- * @description
- * # genreService
- * Service in the movieManagerApp.
- */
 angular.module('movieManagerApp')
   .service('genreService', function ($window) {
 
@@ -23,7 +16,7 @@ angular.module('movieManagerApp')
     }
 
     this.createGenre = function(name){
-      console.log("create Genre!");
+      var hasError = true;
       var genre = {};
       genre.name = name;
       genre.movies = [];
@@ -32,13 +25,16 @@ angular.module('movieManagerApp')
       var found = genres.some(function (el) {
         return el.name === name;
       });
-      if (!found && name != undefined) {
+      if (!found && name != undefined && name !="") {
         genres.push(genre);
         saveState();
+        $('#myModal').modal('hide');
+        hasError = false;
       }
       else{
         console.log("Invalid genre");
       }
+      return hasError
     }
 
     this.restoreState = function(){
@@ -60,29 +56,60 @@ angular.module('movieManagerApp')
     }
 
     this.addMovie = function(genreName,movieTitle){
-      console.log("añadiendo pelicula...", movieTitle,genreName);
+      console.log("addMovie");
+      var hasError = true;
       for(var x in genres){
-        console.log(x);
         if(genres[x].name == genreName){
           var movies = genres[x].movies;
-          console.log("peliculas",movies);
           var id = movies.length + 1;
           var found = movies.some(function (el) {
-            console.log("weeei");
             return el.title === movieTitle;
           });
           if (!found && movieTitle != undefined) {
             genres[x].movies.push(movieTitle);
-            console.log("pelicula añadida");
             saveState();
+            hasError = false;
+            console.log("addMovie bueno");
+            $('#myModalMovie').modal('hide');
           }
           else{
-            console.log("invalid movie!");
+            console.log("addMovie malo");
+          }
+        }
+      }
+      return hasError;
+    }
+
+
+
+    this.deleteMovie = function(genreName,title){
+      for(var i in genres){
+        if(genres[i].name == genreName){
+          var genreMovies = genres[i].movies;
+          for(var j in genreMovies){
+            if(genreMovies[j] == title){
+              genreMovies.splice(j,1);
+              saveState();
+              break;
+            }
           }
         }
       }
     }
 
-  
+    this.getMovies = function(){
+      var movies = [];
+      for(var i in genres){
+        var moviesGenre = genres[i].movies;
+        if(moviesGenre.length > 0){
+          for(var j in moviesGenre){
+            var movie = { "title": moviesGenre[j], "genre": genres[i].name };
+            movies.push(movie)
+          }  
+        }
+      } 
+      return movies;
+    }
+
 
   });

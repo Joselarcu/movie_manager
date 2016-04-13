@@ -1,11 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc directive
- * @name movieManagerApp.directive:footer
- * @description
- * # footer
- */
 angular.module('movieManagerApp')
   .directive('footer', function () {
     return {

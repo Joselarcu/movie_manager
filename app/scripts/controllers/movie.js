@@ -1,31 +1,38 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name movieManagerApp.controller:MovieCtrl
- * @description
- * # MovieCtrl
- * Controller of the movieManagerApp
- */
 angular.module('movieManagerApp')
-  .controller('MovieCtrl',['$scope','genreService', function ($scope,genreService) {
+  .controller('MovieCtrl',['$scope','$rootScope','genreService', function ($scope,$rootScope,genreService) {
     
-  	$scope.genres = genreService.getGenres();
+  	$scope.genres = genreService.getGenres().sort();
+  	$scope.movies = genreService.getMovies();
+  	$scope.inverseTitle = true;
+    $scope.orderTitleDirection = 'title';
 
-  	//select2
-	// $(document).ready(function(){
- //  	$.getScript('//cdnjs.cloudflare.com/ajax/libs/select2/3.4.8/select2.min.js',function(){
- //    	$("#mySel").select2({
-    	
- //    	});
- //    });
- //  });
- //  
- //  
  $scope.createMovie = function(movie){
-    genreService.addMovie(movie.genre.name,movie.title);
-    
-    $('#myModalMovie').modal('hide');
+ 		if(movie != undefined && JSON.stringify(movie) != JSON.stringify({})){
+      $scope.movieCreated = !genreService.addMovie(movie.genre.name,movie.title);
+      $scope.movies = genreService.getMovies();
+	    $rootScope.$broadcast('updateGenre', 'update genre list');	
+ 		}
+ 		else{
+ 			$scope.movieCreated = false;
+ 		}
  }
+
+ $scope.deleteMovie = function(movie){
+ 		genreService.deleteMovie(movie.genre,movie.title);
+ 		$scope.movies = genreService.getMovies();
+ 		$rootScope.$broadcast('updateGenre', 'update genre list');
+ }
+
+ $scope.sortByTitle = function(){
+ 	$scope.inverseTitle = !$scope.inverseTitle;
+  $scope.orderTitleDirection = ($scope.inverseTitle) ? 'title' : '-title';
+ }
+
+
+ $scope.$on('deleteMovies', function (event, arg) { 
+      $scope.movies = genreService.getMovies();
+    });
 	
 }]);

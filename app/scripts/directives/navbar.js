@@ -1,11 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc directive
- * @name movieManagerApp.directive:navbar
- * @description
- * # navbar
- */
 angular.module('movieManagerApp')
   .directive('navbar', function () {
     return {

@@ -17,7 +17,18 @@ describe('Controller: MovieCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(MovieCtrl.awesomeThings.length).toBe(3);
+  it('should have genres, movies,inverseTitle and orderTitleDirection defined', function () {
+     expect(scope.genres).toBeDefined();
+     expect(scope.movies).toBeDefined();
+     expect(scope.inverseTitle).toBeDefined();
+     expect(scope.orderTitleDirection).toBeDefined();
   });
+
+  it('should create a movie', function () {
+      var movie = {"title":"Marte", "genre": "Science fiction"};
+      scope.createMovie(movie);
+      expect(scope.movies.length).toBe(1);
+  });
+
+
 });

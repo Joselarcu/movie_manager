@@ -12,10 +12,10 @@ angular.module('movieManagerApp')
       templateUrl: 'views/filterinput.html',
       restrict: 'E',
       scope:{
-        ngModel: '='
+        ngModel: '=',
+        placeholder: '='
       },
       link: function postLink(scope, element, attrs) {
-
       }
     };
   });

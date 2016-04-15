@@ -7,13 +7,13 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Name <span class="glyphicon glyphicon-chevron-up" ng-show="inverse" ng-click="sortByName()" ></span><span class="glyphicon glyphicon-chevron-down" ng-click="sortByName()" ng-show="!inverse"></span></th>
+            <th sort-column sortby="sortBy" inverse="inverseOrder">Name</th>
             <th>Num movies</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="genre in genres | filter:searchName |orderBy: orderDirection">
+          <tr ng-repeat="genre in genres | filter:searchName |orderBy: sortBy : inverseOrder">
             <th>{{genre.name}}</th>
             <th>{{genre.movies.length}}</th>
             <th> 
@@ -31,7 +31,7 @@
       <h2>Filters</h2>
     </div>
     <div class="row">
-      <filter-input ng-model="searchName"></filter-input>
+      <filter-input ng-model="searchName" placeholder="'Search Name'"></filter-input>
     </div>
     <div class="row">
       <h4>Actions</h4>
@@ -50,13 +50,17 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Title <span class="glyphicon glyphicon-chevron-up" ng-show="inverseTitle" ng-click="sortByTitle()"></span><span class="glyphicon glyphicon-chevron-down" ng-show="!inverseTitle" ng-click="sortByTitle()"></th>
-            <th>Genre     </th>
+            <th sort-column sortby="sortBy" inverse="inverseOrder">
+            Title 
+            <!-- <span class="glyphicon glyphicon-chevron-up" ng-click= "reverseTitle=!reverseTitle" ng-show="reverseTitle" columnToSort='title' ></span>
+            <span class="glyphicon glyphicon-chevron-down" ng-click= "reverseTitle=!reverseTitle" ng-show="!reverseTitle" columnToSort='title'> -->
+            </th>
+            <th>Genre</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="movie in movies | filter:searchTitle |orderBy: orderTitleDirection">
+          <tr ng-repeat="movie in movies | filter:searchTitle |orderBy: sortBy : inverseOrder">
             <th>{{movie.title}}</th>
             <th>{{movie.genre}}</th>
             <th> 
@@ -74,7 +78,7 @@
       <h2>Filters</h2>
     </div>
     <div class="row">
-      <filter-input ng-model="searchTitle"></filter-input>
+      <filter-input ng-model="searchTitle" placeholder="'Search Title'"></filter-input>
     </div>
     <div class="row">
       <h4>Actions</h4>

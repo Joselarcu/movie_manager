@@ -5,9 +5,11 @@ angular.module('movieManagerApp')
 
 
   	$scope.genres = genreService.restoreState() || [];
-  	$scope.inverse = true;
-    $scope.orderDirection = 'name'
-    $scope.genreCreated = false;
+     //$scope.orderDirection = 'name'
+     $scope.sortBy = 'name'
+     $scope.sortByNum = 'movies';
+     $scope.inverseOrder = false;
+     $scope.genreCreated = false;
    
 
   	 $scope.createGenre = function(name){	
@@ -21,12 +23,7 @@ angular.module('movieManagerApp')
     	$scope.genres = genreService.restoreState();
       $rootScope.$broadcast('deleteMovies', 'update movie list');
     }
-
-    $scope.sortByName = function(){
-    	$scope.inverse = !$scope.inverse;
-    	$scope.orderDirection = ($scope.inverse) ? 'name' : '-name';
-    }
-
+    
      $scope.$on('updateGenre', function (event, arg) { 
       $scope.genres = genreService.restoreState();
     });

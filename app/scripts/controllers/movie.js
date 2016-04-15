@@ -5,8 +5,8 @@ angular.module('movieManagerApp')
     
   	$scope.genres = genreService.getGenres().sort();
   	$scope.movies = genreService.getMovies();
-  	$scope.inverseTitle = true;
-    $scope.orderTitleDirection = 'title';
+    $scope.sortBy='title';
+    $scope.inverseOrder = false;
 
  $scope.createMovie = function(movie){
  		if(movie != undefined && JSON.stringify(movie) != JSON.stringify({})){
@@ -24,12 +24,6 @@ angular.module('movieManagerApp')
  		$scope.movies = genreService.getMovies();
  		$rootScope.$broadcast('updateGenre', 'update genre list');
  }
-
- $scope.sortByTitle = function(){
- 	$scope.inverseTitle = !$scope.inverseTitle;
-  $scope.orderTitleDirection = ($scope.inverseTitle) ? 'title' : '-title';
- }
-
 
  $scope.$on('deleteMovies', function (event, arg) { 
       $scope.movies = genreService.getMovies();

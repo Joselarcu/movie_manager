@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('movieManagerApp')
-  .controller('MainCtrl',['$scope','genreService', function ($scope,genreService) {
+  .controller('MainCtrl',['$scope', function ($scope) {
    
 
   }]);

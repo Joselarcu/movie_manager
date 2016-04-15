@@ -15,7 +15,7 @@ angular.module('movieManagerApp')
         ngModel: '=',
         placeholder: '='
       },
-      link: function postLink(scope, element, attrs) {
+      link: function postLink() {
       }
     };
   });

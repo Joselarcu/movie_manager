@@ -5,7 +5,7 @@ angular.module('movieManagerApp')
     return {
       templateUrl: 'views/navbar.html',
       restrict: 'E',
-      link: function postLink(scope, element, attrs) {
+      link: function postLink() {
         
       }
     };

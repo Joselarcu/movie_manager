@@ -17,17 +17,17 @@ describe('Controller: GenreCtrl', function () {
     });
   }));
 
-  it('inverse should be defined', function () {
-    expect(scope.inverse).toBeDefined();
-    expect(scope.inverse).toBe(true);
+  it('inverseOrder should be defined', function () {
+    expect(scope.inverseOrder).toBeDefined();
+    expect(scope.inverseOrder).toBe(false);
   });
-   it('orderDirection should be defined', function () {
-    expect(scope.orderDirection).toBeDefined();
-    expect(scope.orderDirection).toBe('name');
+   it('genreCreated should be defined', function () {
+    expect(scope.genreCreated).toBeDefined();
+    expect(scope.genreCreated).toBe(false);
   });
 
   it('genres should be defined', function () {
-    expect(scope.orderDirection).toBeDefined();
+    expect(scope.genres).toBeDefined();
   });
 
   it('should create a genre with the correct name',function(){

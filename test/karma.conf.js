@@ -32,7 +32,11 @@ module.exports = function(config) {
       'bower_components/ui-select/dist/select.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
-      'app/scripts/**/*.js',
+      'app/*.js',
+      'app/**/**/*.js',
+      'app/**/*.ctrl.js',
+      'app/**/*.srv.js',
+      'app/components/**/*.js',
       'test/mock/**/*.js',
       'test/spec/**/*.js'
     ],
@@ -60,7 +64,17 @@ module.exports = function(config) {
     plugins: [
       'karma-phantomjs-launcher',
       'karma-jasmine'
+      //'karma-ng-html2js-preprocessor' 
     ],
+
+    // preprocessors: { 
+    //   'app/views/*.html': ['ng-html2js'] 
+    // }, 
+
+    // ngHtml2JsPreprocessor: { 
+    //   stripPrefix: 'app/', 
+    //   moduleName: 'my.templates' 
+    // },
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit

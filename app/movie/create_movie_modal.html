@@ -1,0 +1,47 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalMovie">
+  Create Movie
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModalMovie" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create Movie</h4>
+      </div>
+      <form name="movieForm" novalidate> 
+        <div class="modal-body">
+          <div class="form-group" >
+            <label>Title*</label>
+            <input type="text" class="form-control" name="title" id="movie" ng-model="movie.title" required>
+            <div>
+              <span class="error" ng-show="movieForm.$submitted && movieForm.title.$error.required && !movieCreated">
+               invalid field</span>
+            </div>
+
+            <label>Genre*</label> 
+            <ui-select ng-model="movie.genre" name="genre" required>
+              <ui-select-match>
+                  <span ng-bind="$select.selected.name"></span>
+              </ui-select-match>
+              <ui-select-choices repeat="genre in (genres | filter: $select.search) track by genre.name ">
+                  <span ng-bind="genre.name"></span>
+              </ui-select-choices>
+            </ui-select>
+            <div>
+              <span class="error" ng-show="movieForm.$submitted && movieForm.genre.$error.required && !movieCreated">
+               invalid field</span>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" ng-click="createMovie(movie);movie={}">Create</button>
+        </div>
+    </form>
+    </div>
+  </div>
+</div>

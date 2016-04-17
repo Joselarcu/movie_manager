@@ -17,11 +17,11 @@ describe('Controller: MovieCtrl', function () {
     });
   }));
 
-  it('should have genres, movies,inverseTitle and orderTitleDirection defined', function () {
+  it('should have genres, movies,sortBy and inverseOrder defined', function () {
      expect(scope.genres).toBeDefined();
      expect(scope.movies).toBeDefined();
-     expect(scope.inverseTitle).toBeDefined();
-     expect(scope.orderTitleDirection).toBeDefined();
+     expect(scope.sortBy).toBeDefined();
+     expect(scope.inverseOrder).toBeDefined();
   });
 
 });

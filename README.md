@@ -5,8 +5,15 @@ version 0.15.1.
 
 ## Build & development
 
-Run `grunt` for building and `grunt serve` for preview.
+1. `npm install`
+
+2. `bower install`
+
+3. `grunt serve`
+
 
 ## Testing
+
+1.`npm install grunt-karma --save-dev`
 
 Running `grunt test` will run the unit tests with karma.

@@ -1,12 +1,16 @@
-'use strict';
+(function(){
+	'use strict';
 
-angular.module('movieManagerApp')
-  .directive('footer', function () {
-    return {
-      templateUrl: 'components/footer/footer.html',
-      restrict: 'E',
-      link: function postLink() {
-       
-      }
-    };
-  });
+	angular.module('movieManagerApp')
+	.directive('footer', function () {
+	  var directive = {
+	 		link: link,
+	 		templateUrl: 'components/footer/footer.html',
+	 		restrict: 'E'
+	 };
+	 return directive;
+
+	 function link(scope,element,attrs){
+	 }
+	});
+})();

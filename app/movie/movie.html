@@ -1,4 +1,4 @@
-<div class="row row-movies" ng-controller="MovieCtrl">
+<div class="row row-movies" ng-controller="MovieCtrl as movie">
   <div class="col-md-6">
     <div class="row">
       <h1>Movies</h1>
@@ -7,7 +7,7 @@
       <table class="table">
         <thead>
           <tr>
-            <th sort-column sortby="sortBy" inverse="inverseOrder">
+            <th sort-column sortby="movie.sortBy" inverse="movie.inverseOrder">
             Title 
             <!-- <span class="glyphicon glyphicon-chevron-up" ng-click= "reverseTitle=!reverseTitle" ng-show="reverseTitle" columnToSort='title' ></span>
             <span class="glyphicon glyphicon-chevron-down" ng-click= "reverseTitle=!reverseTitle" ng-show="!reverseTitle" columnToSort='title'> -->
@@ -17,11 +17,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="movie in movies | filter:searchTitle |orderBy: sortBy : inverseOrder">
-            <th>{{movie.title}}</th>
-            <th>{{movie.genre}}</th>
+          <tr ng-repeat="movieDetail in movie.movies | filter:searchTitle |orderBy: movie.sortBy : movie.inverseOrder">
+            <th>{{movieDetail.title}}</th>
+            <th>{{movieDetail.genre}}</th>
             <th> 
-              <button type="button" class="btn btn-danger" ng-click="deleteMovie(movie)">
+              <button type="button" class="btn btn-danger" ng-click="movie.deleteMovie(movieDetail)">
                 <span class="glyphicon glyphicon-trash"></span>
               </button>
             </th>

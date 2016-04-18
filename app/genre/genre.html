@@ -1,4 +1,4 @@
-<div class="row" ng-controller="GenreCtrl">
+<div class="row" ng-controller="GenreCtrl as genre">
   <div class="col-md-6">
     <div class="row">
       <h1>Genres</h1>
@@ -7,17 +7,17 @@
       <table class="table">
         <thead>
           <tr>
-            <th sort-column sortby="sortBy" inverse="inverseOrder">Name</th>
+            <th sort-column sortby="genre.sortBy" inverse="genre.inverseOrder">Name</th>
             <th>Num movies</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="genre in genres | filter:searchName |orderBy: sortBy : inverseOrder">
-            <th>{{genre.name}}</th>
-            <th>{{genre.movies.length}}</th>
+          <tr ng-repeat="genredetail in genre.genres | filter:searchName |orderBy: genre.sortBy : genre.inverseOrder">
+            <th>{{genredetail.name}}</th>
+            <th>{{genredetail.movies.length}}</th>
             <th> 
-              <button type="button" class="btn btn-danger" ng-click="deleteGenre(genre.name)">
+              <button type="button" class="btn btn-danger" ng-click="genre.deleteGenre(genredetail.name)">
                 <span class="glyphicon glyphicon-trash"></span>
               </button>
             </th>

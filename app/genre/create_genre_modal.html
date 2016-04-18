@@ -16,14 +16,14 @@
           <div class="form-group">
             <label for="genre" >Name*</label>
             <input type="text" class="form-control" id="genre" ng-model="name" name="name" required> 
-            <div ng-show="genreForm.$submitted && !genreCreated">
+            <div ng-show="genreForm.$submitted && !genre.genreCreated">
               <span  class="error">Invalid field</span>
             </div>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" ng-click="createGenre(name); name=''">Create</button>
+          <button type="submit" class="btn btn-primary" ng-click="genre.createGenre(name); name=''">Create</button>
         </div>
       </form>
     </div>

@@ -15,31 +15,31 @@
         <div class="modal-body">
           <div class="form-group" >
             <label>Title*</label>
-            <input type="text" class="form-control" name="title" id="movie" ng-model="movie.title" required>
+            <input type="text" class="form-control" name="title" id="movie" ng-model="newMovie.title" required>
             <div>
-              <span class="error" ng-show="movieForm.$submitted && movieForm.title.$error.required && !movieCreated">
+              <span class="error" ng-show="movieForm.$submitted && movieForm.title.$error.required && !movie.movieCreated">
                invalid field</span>
             </div>
 
             <label>Genre*</label> 
-            <ui-select ng-model="movie.genre" name="genre" required>
+            <ui-select ng-model="newMovie.genre" name="genre" required>
               <ui-select-match>
                   <span ng-bind="$select.selected.name"></span>
               </ui-select-match>
-              <ui-select-choices repeat="genre in (genres | filter: $select.search) track by genre.name ">
+              <ui-select-choices repeat="genre in (movie.genres | filter: $select.search) track by genre.name ">
                   <span ng-bind="genre.name"></span>
               </ui-select-choices>
             </ui-select>
             <div>
-              <span class="error" ng-show="movieForm.$submitted && movieForm.genre.$error.required && !movieCreated">
+              <span class="error" ng-show="movieForm.$submitted && movieForm.genre.$error.required && !movie.movieCreated">
                invalid field</span>
             </div>
-
           </div>
         </div>
         <div class="modal-footer">
+        {{!movie.movieCreated}}
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" ng-click="createMovie(movie);movie={}">Create</button>
+          <button type="submit" class="btn btn-primary" ng-click="movie.createMovie(newMovie);newMovie={}">Create</button>
         </div>
     </form>
     </div>

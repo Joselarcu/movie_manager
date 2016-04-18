@@ -1,29 +1,34 @@
-'use strict';
+(function(){
 
-angular.module('movieManagerApp')
-  .controller('GenreCtrl',['$scope','$rootScope','genreService', function ($scope,$rootScope,genreService) {
+  'use strict';
 
-  	$scope.genres = genreService.restoreState() || [];
-     $scope.sortBy = 'name';
-     $scope.inverseOrder = false;
-     $scope.genreCreated = false;
-   
+  angular.module('movieManagerApp')
+    .controller('GenreCtrl',['$scope','$rootScope','genreService', function ($scope,$rootScope,genreService) {
 
-  	 $scope.createGenre = function(name){	
-    	$scope.genreCreated = !genreService.createGenre(name);
-    	$scope.genres = genreService.restoreState();
-   
-    };
+      var vm = this;
 
-    $scope.deleteGenre = function(name){
-    	genreService.deleteGenre(name);
-    	$scope.genres = genreService.restoreState();
-      $rootScope.$broadcast('deleteMovies', 'update movie list');
-    };
-    
-     $scope.$on('updateGenre', function () { 
-      $scope.genres = genreService.restoreState();
-    });
+    	this.genres = genreService.restoreState() || [];
+       vm.sortBy = 'name';
+       vm.inverseOrder = false;
+       vm.genreCreated = false;
+     
+
+    	 vm.createGenre = function(name){	
+      	vm.genreCreated = !genreService.createGenre(name);
+      	vm.genres = genreService.restoreState();
+     
+      };
+
+      vm.deleteGenre = function(name){
+      	genreService.deleteGenre(name);
+      	vm.genres = genreService.restoreState();
+        $rootScope.$broadcast('deleteMovies', 'update movie list');
+      };
+      
+       $scope.$on('updateGenre', function () { 
+        vm.genres = genreService.restoreState();
+      });
 
 
   }]);
+})();

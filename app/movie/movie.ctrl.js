@@ -1,32 +1,37 @@
-'use strict';
+(function(){
+  'use strict';
 
-angular.module('movieManagerApp')
-  .controller('MovieCtrl',['$scope','$rootScope','genreService', function ($scope,$rootScope,genreService) {
-    
-  	$scope.genres = genreService.getGenres().sort();
-  	$scope.movies = genreService.getMovies();
-    $scope.sortBy = 'title';
-    $scope.inverseOrder = false;
+  angular.module('movieManagerApp')
+    .controller('MovieCtrl',['$scope','$rootScope','genreService', function ($scope,$rootScope,genreService) {
+      
+      var vm = this;
 
- $scope.createMovie = function(movie){
- 		if(movie !== undefined && JSON.stringify(movie) !== JSON.stringify({})){
-      $scope.movieCreated = !genreService.addMovie(movie.genre.name,movie.title);
-      $scope.movies = genreService.getMovies();
-	    $rootScope.$broadcast('updateGenre', 'update genre list');	
- 		}
- 		else{
- 			$scope.movieCreated = false;
- 		}
- };
+    	vm.genres = genreService.getGenres().sort();
+    	vm.movies = genreService.getMovies();
+      vm.sortBy = 'title';
+      vm.inverseOrder = false;
+      // vm.movieCreated = false;
 
- $scope.deleteMovie = function(movie){
- 		genreService.deleteMovie(movie.genre,movie.title);
- 		$scope.movies = genreService.getMovies();
- 		$rootScope.$broadcast('updateGenre', 'update genre list');
- };
+   vm.createMovie = function(movie){
+   		if(movie !== undefined && JSON.stringify(movie) !== JSON.stringify({})){
+        vm.movieCreated = !genreService.addMovie(movie.genre.name,movie.title);
+        vm.movies = genreService.getMovies();
+  	    $rootScope.$broadcast('updateGenre', 'update genre list');	
+   		}
+   		else{
+   			vm.movieCreated = false;
+   		}
+   };
 
- $scope.$on('deleteMovies', function () { 
-      $scope.movies = genreService.getMovies();
-    });
-	
-}]);
+   vm.deleteMovie = function(movie){
+   		genreService.deleteMovie(movie.genre,movie.title);
+   		vm.movies = genreService.getMovies();
+   		$rootScope.$broadcast('updateGenre', 'update genre list');
+   };
+
+   $scope.$on('deleteMovies', function () { 
+        vm.movies = genreService.getMovies();
+      });
+  	
+  }]);
+})();

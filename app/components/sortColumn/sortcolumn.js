@@ -1,3 +1,5 @@
+(function(){
+
 'use strict';
 
 /**
@@ -6,7 +8,7 @@
  * @description
  * # sortColumn
  */
-angular.module('movieManagerApp')
+  angular.module('movieManagerApp')
   .directive('sortColumn', function () {
     return {
       templateUrl: 'components/sortColumn/sortcolumn.html',
@@ -24,3 +26,4 @@ angular.module('movieManagerApp')
       }
     };
   });
+})();

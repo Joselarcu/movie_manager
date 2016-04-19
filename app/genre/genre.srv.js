@@ -2,8 +2,9 @@
 
   'use strict';
 
-  angular.module('movieManagerApp')
-    .service('genreService', function ($window) {
+  angular.module('movieManagerApp').service('genreService', genreService);
+    genreService.$inject = ['$window'];
+    function genreService($window){
 
       var last_genres = restoreState();
       var genres = (last_genres) ? last_genres : [];
@@ -110,5 +111,6 @@
         } 
         return movies;
       }
-  });
+
+  }
 })();

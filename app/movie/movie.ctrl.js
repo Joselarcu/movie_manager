@@ -1,16 +1,17 @@
 (function(){
   'use strict';
 
-  angular.module('movieManagerApp')
-    .controller('MovieCtrl',['$scope','$rootScope','genreService', function ($scope,$rootScope,genreService) {
-      
-      var vm = this;
+  angular.module('movieManagerApp').controller('MovieCtrl',MovieCtrl);
+  MovieCtrl.$inject = ['$scope','$rootScope','genreService'];
+  function MovieCtrl($scope, $rootScope, genreService) {
 
-    	vm.genres = genreService.getGenres().sort();
-    	vm.movies = genreService.getMovies();
-      vm.sortBy = 'title';
-      vm.inverseOrder = false;
-      // vm.movieCreated = false;
+    var vm = this;
+
+  	vm.genres = genreService.getGenres().sort();
+  	vm.movies = genreService.getMovies();
+    vm.sortBy = 'title';
+    vm.inverseOrder = false;
+    // vm.movieCreated = false;
 
    vm.createMovie = function(movie){
    		if(movie !== undefined && JSON.stringify(movie) !== JSON.stringify({})){
@@ -30,8 +31,8 @@
    };
 
    $scope.$on('deleteMovies', function () { 
-        vm.movies = genreService.getMovies();
-      });
-  	
-  }]);
+      vm.movies = genreService.getMovies();
+    });
+  }
 })();
+

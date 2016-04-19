@@ -24,10 +24,21 @@
         .when('/', {
           templateUrl: 'main/main.html',
           controller: 'MainCtrl',
-          controllerAs: 'main'
+          controllerAs: 'main',
+          resolve:{
+            //Do something before load the view
+            //resolveFunction : resolveFunction
+          }
         })
         .otherwise({
           redirectTo: '/'
         });
     });
+
+    // resolveFunction.$inject = ['genreService'];
+    // function resolveFunction(genreService) {
+    //   console.log("executing resolveFuction");
+    // }
+
 })();
+
